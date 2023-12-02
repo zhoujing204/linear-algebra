@@ -4,5 +4,25 @@
         "mathprofessorquotes",
         "Nonsquare",
         "squishification"
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#cae8ba",
+        "activityBar.background": "#cae8ba",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#7091cf",
+        "activityBarBadge.foreground": "#15202b",
+        "commandCenter.border": "#15202b99",
+        "sash.hoverBorder": "#cae8ba",
+        "statusBar.background": "#acdc93",
+        "statusBar.foreground": "#15202b",
+        "statusBarItem.hoverBackground": "#8ed06c",
+        "statusBarItem.remoteBackground": "#acdc93",
+        "statusBarItem.remoteForeground": "#15202b",
+        "titleBar.activeBackground": "#acdc93",
+        "titleBar.activeForeground": "#15202b",
+        "titleBar.inactiveBackground": "#acdc9399",
+        "titleBar.inactiveForeground": "#15202b99"
+    },
+    "peacock.color": "#acdc93"
 }
