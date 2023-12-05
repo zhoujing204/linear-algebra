@@ -1,0 +1,1102 @@
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+\usepackage{fancyhdr}           % For header and footer
+\usepackage{multicol}           % Allows multicols in tables
+\usepackage{tabularx}           % Intelligent column widths
+\usepackage{tabulary}           % Used in header and footer
+\usepackage{hhline}             % Border under tables
+\usepackage{graphicx}           % For images
+\usepackage{xcolor}             % For hex colours
+%\usepackage[utf8x]{inputenc}    % For unicode character support
+\usepackage[T1]{fontenc}        % Without this we get weird character replacements
+\usepackage{colortbl}           % For coloured tables
+\usepackage{setspace}           % For line height
+\usepackage{lastpage}           % Needed for total page number
+\usepackage{seqsplit}           % Splits long words.
+%\usepackage{opensans}          % Can't make this work so far. Shame. Would be lovely.
+\usepackage[normalem]{ulem}     % For underlining links
+% Most of the following are not required for the majority
+% of cheat sheets but are needed for some symbol support.
+\usepackage{amsmath}            % Symbols
+\usepackage{MnSymbol}           % Symbols
+\usepackage{wasysym}            % Symbols
+%\usepackage[english,german,french,spanish,italian]{babel}              % Languages
+
+% Document Info
+\author{fionaw}
+\pdfinfo{
+  /Title (linear-algebra-math-232.pdf)
+  /Creator (Cheatography)
+  /Author (fionaw)
+  /Subject (Linear Algebra - MATH 232 Cheat Sheet)
+}
+
+% Lengths and widths
+\addtolength{\textwidth}{6cm}
+\addtolength{\textheight}{-1cm}
+\addtolength{\hoffset}{-3cm}
+\addtolength{\voffset}{-2cm}
+\setlength{\tabcolsep}{0.2cm} % Space between columns
+\setlength{\headsep}{-12pt} % Reduce space between header and content
+\setlength{\headheight}{85pt} % If less, LaTeX automatically increases it
+\renewcommand{\footrulewidth}{0pt} % Remove footer line
+\renewcommand{\headrulewidth}{0pt} % Remove header line
+\renewcommand{\seqinsert}{\ifmmode\allowbreak\else\-\fi} % Hyphens in seqsplit
+% This two commands together give roughly
+% the right line height in the tables
+\renewcommand{\arraystretch}{1.3}
+\onehalfspacing
+
+% Commands
+\newcommand{\SetRowColor}[1]{\noalign{\gdef\RowColorName{#1}}\rowcolor{\RowColorName}} % Shortcut for row colour
+\newcommand{\mymulticolumn}[3]{\multicolumn{#1}{>{\columncolor{\RowColorName}}#2}{#3}} % For coloured multi-cols
+\newcolumntype{x}[1]{>{\raggedright}p{#1}} % New column types for ragged-right paragraph columns
+\newcommand{\tn}{\tabularnewline} % Required as custom column type in use
+
+% Font and Colours
+\definecolor{HeadBackground}{HTML}{333333}
+\definecolor{FootBackground}{HTML}{666666}
+\definecolor{TextColor}{HTML}{333333}
+\definecolor{DarkBackground}{HTML}{5296AF}
+\definecolor{LightBackground}{HTML}{F4F8FA}
+\renewcommand{\familydefault}{\sfdefault}
+\color{TextColor}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhead{} % Set header to blank
+\fancyfoot{} % Set footer to blank
+\fancyhead[L]{
+\noindent
+\begin{multicols}{3}
+\begin{tabulary}{5.8cm}{C}
+    \SetRowColor{DarkBackground}
+    \vspace{-7pt}
+    {\parbox{\dimexpr\textwidth-2\fboxsep\relax}{\noindent
+        \hspace*{-6pt}\includegraphics[width=5.8cm]{/web/www.cheatography.com/public/images/cheatography_logo.pdf}}
+    }
+\end{tabulary}
+\columnbreak
+\begin{tabulary}{11cm}{L}
+    \vspace{-2pt}\large{\bf{\textcolor{DarkBackground}{\textrm{Linear Algebra - MATH 232 Cheat Sheet}}}} \\
+    \normalsize{by \textcolor{DarkBackground}{fionaw} via \textcolor{DarkBackground}{\uline{cheatography.com/124375/cs/23750/}}}
+\end{tabulary}
+\end{multicols}}
+
+\fancyfoot[L]{ \footnotesize
+\noindent
+\begin{multicols}{3}
+\begin{tabulary}{5.8cm}{LL}
+  \SetRowColor{FootBackground}
+  \mymulticolumn{2}{p{5.377cm}}{\bf\textcolor{white}{Cheatographer}}  \\
+  \vspace{-2pt}fionaw \\
+  \uline{cheatography.com/fionaw} \\
+  \end{tabulary}
+\vfill
+\columnbreak
+\begin{tabulary}{5.8cm}{L}
+  \SetRowColor{FootBackground}
+  \mymulticolumn{1}{p{5.377cm}}{\bf\textcolor{white}{Cheat Sheet}}  \\
+   \vspace{-2pt}Published 16th July, 2020.\\
+   Updated 10th August, 2020.\\
+   Page {\thepage} of \pageref{LastPage}.
+\end{tabulary}
+\vfill
+\columnbreak
+\begin{tabulary}{5.8cm}{L}
+  \SetRowColor{FootBackground}
+  \mymulticolumn{1}{p{5.377cm}}{\bf\textcolor{white}{Sponsor}}  \\
+  \SetRowColor{white}
+  \vspace{-5pt}
+  %\includegraphics[width=48px,height=48px]{dave.jpeg}
+  Measure your website readability!\\
+  www.readability-score.com
+\end{tabulary}
+\end{multicols}}
+
+
+
+
+\begin{document}
+\raggedright
+\raggedcolumns
+
+% Set font size to small. Switch to any value
+% from this page to resize cheat sheet text:
+% www.emerson.emory.edu/services/latex/latex_169.html
+\footnotesize % Small font.
+
+\begin{multicols*}{3}
+
+\begin{tabularx}{5.377cm}{x{1.9908 cm} x{2.9862 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Basic Equations}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{Network Flows}}} \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{1. the flow in an arc is only in one directions} \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{2. flow into a node = flow out of a node} \tn 
+% Row Count 3 (+ 1)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{3. flow into the network = flow out of the network} \tn 
+% Row Count 4 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{Balancing Chemical Equations}}} \tn 
+% Row Count 5 (+ 1)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{1. add x's before each combo and both side} \tn 
+% Row Count 6 (+ 1)
+% Row 6
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{2. carbo = x1 + 2(x3), set as system, solve} \tn 
+% Row Count 7 (+ 1)
+% Row 7
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{Matrix}}} \tn 
+% Row Count 8 (+ 1)
+% Row 8
+\SetRowColor{LightBackground}
+augmented matrix & variables and solution(rhs) \tn 
+% Row Count 10 (+ 2)
+% Row 9
+\SetRowColor{white}
+coefficient matrix & coefficients only, no rhs \tn 
+% Row Count 12 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{2.88666 cm} x{2.09034 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Vectors, Norm, Dot Product}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{maginitude (norm) of vector v is ||v||; ||v|| ≥ 0} \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+if k\textgreater{}0, kv same direction as v & magnitude = k||v|| \tn 
+% Row Count 4 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+if k\textless{}0, kv opposite direction to v & magnitude = |k| ||v|| \tn 
+% Row Count 6 (+ 2)
+% Row 3
+\SetRowColor{white}
+vectors in R\textasciicircum{}n\textasciicircum{} (n = dimension) & v = (v1, v2, ..., vn) \tn 
+% Row Count 8 (+ 2)
+% Row 4
+\SetRowColor{LightBackground}
+v = P1P2 = OP2 - OP1 & displacement vector \tn 
+% Row Count 10 (+ 2)
+% Row 5
+\SetRowColor{white}
+norm/magnitude of vector {\bf{||v|| }} & {\bf{sqrt( (v1)\textasciicircum{}2\textasciicircum{}+(v2)\textasciicircum{}2\textasciicircum{}...)}} \tn 
+% Row Count 12 (+ 2)
+% Row 6
+\SetRowColor{LightBackground}
+||v|| = 0 iff v =0 & ||kv|| = |k| ||v|| \tn 
+% Row Count 14 (+ 2)
+% Row 7
+\SetRowColor{white}
+unit vector u in same direct as v & {\bf{u = (1/ ||v||) v}} \tn 
+% Row Count 16 (+ 2)
+% Row 8
+\SetRowColor{LightBackground}
+e1 = (1,0...) ... en = (0,...1) in R\textasciicircum{}n\textasciicircum{} & standard unit vector \tn 
+% Row Count 18 (+ 2)
+% Row 9
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{d(u,v) = sqrt((u1-v1)\textasciicircum{}2\textasciicircum{} + (u2-v2)\textasciicircum{}2\textasciicircum{} ... (un-vn)\textasciicircum{}2\textasciicircum{}) = ||u-v||}}} \tn 
+% Row Count 20 (+ 2)
+% Row 10
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{d(u,v) = 0 iff u = v} \tn 
+% Row Count 21 (+ 1)
+% Row 11
+\SetRowColor{white}
+{\bf{u·v = u1v1 + u2v2 ...+unvn\{\{nl\}\}||u|| ||v|| cos(θ)}} & dot product \tn 
+% Row Count 24 (+ 3)
+% Row 12
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{u and v are orthogonal if u·v = 0 (cos(θ) = 0)} \tn 
+% Row Count 25 (+ 1)
+% Row 13
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{a set of vectors is an orthogonal set iff vi·vj = 0,if i≠j} \tn 
+% Row Count 27 (+ 2)
+% Row 14
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{a set of vectors is an orthonormal set iff vi·vj = 0,if i≠j, and ||vi|| = 1 for all i} \tn 
+% Row Count 29 (+ 2)
+% Row 15
+\SetRowColor{white}
+{\bf{(u·v)\textasciicircum{}2\textasciicircum{} ≤ ||u||\textasciicircum{}2\textasciicircum{}||v||\textasciicircum{}2\textasciicircum{}}} or \{\{nl\}\}{\bf{|u·v| ≤ ||u|| ||v||}} & Cauchy-Schwarz Inequality \tn 
+% Row Count 33 (+ 4)
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\vfill
+\columnbreak
+\begin{tabularx}{5.377cm}{x{2.88666 cm} x{2.09034 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Vectors, Norm, Dot Product (cont)}}  \tn
+% Row 16
+\SetRowColor{LightBackground}
+{\bf{d(uv) ≤ d(u,w) + d(w,v) \{\{nl\}\}||u+v|| ≤ ||u|| + ||v||}} & Triangle Inequality \tn 
+% Row Count 3 (+ 3)
+% Row 17
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{||v1 + v2 ... + vk|| = ||v1|| + ||v2|| ... + ||vk||}}} \tn 
+% Row Count 5 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{2.4885 cm} x{2.4885 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Lines and Planes}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+a vector equation with parameter t & x = x0 + tv, \{\{nl\}\}-∞ \textless{} t \textless{} +∞ \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{solutin set for 3 dimension linear equation is a {\bf{plane}}} \tn 
+% Row Count 4 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+if x is a point on this plane\{\{nl\}\}{\bf{(point-normal equation)}} & n·(x-x0) = 0 \tn 
+% Row Count 8 (+ 4)
+% Row 3
+\SetRowColor{white}
+{\bf{A(x-x0)+B(y-y0)+C(z-z0) = 0}} & {\bf{x0 = (x0,y0,z0), \{\{nl\}\}n = (A, B, C)}} \tn 
+% Row Count 10 (+ 2)
+% Row 4
+\SetRowColor{LightBackground}
+general/algebraic equation & Ax+By+Cz = D \tn 
+% Row Count 12 (+ 2)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{two planes are {\bf{parallel if n1 = kn2}}, \{\{nl\}\}{\bf{orthogonal if n1·n2 = 0}}} \tn 
+% Row Count 14 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{3.08574 cm} x{1.89126 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Matrix Algebra, Identity and Inverse Matrix}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+(A + B)ij = (A)ij + (B)ij & (A - B)ij = (A)ij - (B)ij \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+(cA)ij = c(A)ij & {\bf{(A\textasciicircum{}T\textasciicircum{})ij = (A)ji}} \tn 
+% Row Count 4 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{(AB)ij = ai1b1j + ai2b2j + ... aikbkj} \tn 
+% Row Count 5 (+ 1)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{Inner Product (number) is u\textasciicircum{}T\textasciicircum{}v = u·v}}, u and v same size} \tn 
+% Row Count 7 (+ 2)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{Outer Product (matrix) is uv\textasciicircum{}T\textasciicircum{}}}, u and v can be any size} \tn 
+% Row Count 9 (+ 2)
+% Row 5
+\SetRowColor{white}
+(A\textasciicircum{}T\textasciicircum{})\textasciicircum{}T\textasciicircum{} = A & (kA)\textasciicircum{}T\textasciicircum{} = k(A)\textasciicircum{}T\textasciicircum{} \tn 
+% Row Count 11 (+ 2)
+% Row 6
+\SetRowColor{LightBackground}
+(A+B)\textasciicircum{}T\textasciicircum{} = A\textasciicircum{}T\textasciicircum{} + B\textasciicircum{}T\textasciicircum{} & (AB)\textasciicircum{}T\textasciicircum{} = B\textasciicircum{}T\textasciicircum{}A\textasciicircum{}T\textasciicircum{} \tn 
+% Row Count 13 (+ 2)
+% Row 7
+\SetRowColor{white}
+tr(A\textasciicircum{}T\textasciicircum{}) = tr(A) & tr(AB) = tr(BA) \tn 
+% Row Count 14 (+ 1)
+% Row 8
+\SetRowColor{LightBackground}
+u\textasciicircum{}T\textasciicircum{}v = tr(uv\textasciicircum{}T\textasciicircum{}) & tr(uv\textasciicircum{}T\textasciicircum{}) = tr(vu\textasciicircum{}T\textasciicircum{}) \tn 
+% Row Count 16 (+ 2)
+% Row 9
+\SetRowColor{white}
+{\bf{tr(A) = a11 + a22 ... + ann}} & (A\textasciicircum{}T\textasciicircum{})ij = Aji \tn 
+% Row Count 18 (+ 2)
+% Row 10
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{Identity matrix is square matrix with 1 along diagonals} \tn 
+% Row Count 20 (+ 2)
+% Row 11
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{If A is m x n, AꞮn = A and ꞮmA = A} \tn 
+% Row Count 21 (+ 1)
+% Row 12
+\SetRowColor{LightBackground}
+a square matrix is \{\{nl\}\}{\bf{invertible(nonsingular)}} if: & {\bf{AB = Ɪ = BA}} \tn 
+% Row Count 24 (+ 3)
+% Row 13
+\SetRowColor{white}
+B is the inverse of A & B = A\textasciicircum{}-1\textasciicircum{} \tn 
+% Row Count 25 (+ 1)
+% Row 14
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{if A has no inverse, A is not invertible (singular)} \tn 
+% Row Count 27 (+ 2)
+% Row 15
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{det(A) = ad - bc ≠ 0 is invertible}}} \tn 
+% Row Count 28 (+ 1)
+% Row 16
+\SetRowColor{LightBackground}
+if A is invertible: & (AB)\textasciicircum{}-1\textasciicircum{} = B\textasciicircum{}-1\textasciicircum{}A\textasciicircum{}-1\textasciicircum{} \tn 
+% Row Count 30 (+ 2)
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\vfill
+\columnbreak
+\begin{tabularx}{5.377cm}{x{3.08574 cm} x{1.89126 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Matrix Algebra, Identity and Inverse Matrix (cont)}}  \tn
+% Row 17
+\SetRowColor{LightBackground}
+(A\textasciicircum{}n\textasciicircum{})\textasciicircum{}-1\textasciicircum{} = A\textasciicircum{}-n\textasciicircum{} = (A\textasciicircum{}-1\textasciicircum{})\textasciicircum{}n\textasciicircum{} & (A\textasciicircum{}T\textasciicircum{})\textasciicircum{}-1\textasciicircum{} = (A\textasciicircum{}-1\textasciicircum{})\textasciicircum{}T\textasciicircum{} \tn 
+% Row Count 2 (+ 2)
+% Row 18
+\SetRowColor{white}
+(kA)\textasciicircum{}-1\textasciicircum{} & 1/k(A\textasciicircum{}-1\textasciicircum{}), k≠0 \tn 
+% Row Count 4 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{X}
+\SetRowColor{DarkBackground}
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{Elementary Matrix and Unifying Theorem}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{elementary matrices are invertible} \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{A\textasciicircum{}-1\textasciicircum{} = Ek Ek-1  {\bf{...}} ~E2 E1} \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{{\bf{{[} A | Ɪ {]} -\textgreater{} {[} Ɪ | A\textasciicircum{}-1\textasciicircum{} {]} }} \{\{nl\}\} {\emph{(how to find inverse of A)}}} \tn 
+% Row Count 4 (+ 2)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{Ax = b; {\bf{ x = A\textasciicircum{}-1\textasciicircum{}b}}} \tn 
+% Row Count 5 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{- A -\textgreater{} RREF = Ɪ \{\{nl\}\} - A can be express as a product of E \{\{nl\}\}- A is invertible \{\{nl\}\}- Ax = 0 has only the trivial solution \{\{nl\}\}- Ax = b is consistent for every vector b in R\textasciicircum{}n\textasciicircum{} \{\{nl\}\}- Ax = b has eactly 1 solution for every b in R\textasciicircum{}n\textasciicircum{} \{\{nl\}\}- colum and rowvectors of A are linealy independent \{\{nl\}\}- det(A) ≠ 0 \{\{nl\}\}- λ = 0 is not an eigenvalue of A \{\{nl\}\}- TA is one to one and onto  \{\{nl\}\}If not, then all no.} \tn 
+% Row Count 14 (+ 9)
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{X}
+\SetRowColor{DarkBackground}
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{Consistency}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{EAx = Eb -\textgreater{} {\bf{Rx = b' , where b' = Eb}}} \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{(Ax=b) {\bf{{[} A | b {]} -\textgreater{} {[} EA | Eb {]}}}  (Rx = b') \{\{nl\}\}{\emph{(but treat b as unknown:  b1, b2...)}}} \tn 
+% Row Count 3 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{{\bf{For it to be consistent, if R has zero rows at the bottom, b' that row must equal to zero }}} \tn 
+% Row Count 5 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{3.63321 cm} x{1.34379 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Homogeneous Systems}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{Linear Combination of the vectors: \{\{nl\}\} {\bf{v = c1v1 + c2v2 ... + cnvn}}  \{\{nl\}\}{\emph{(use matrix to find c)}}} \tn 
+% Row Count 3 (+ 3)
+% Row 1
+\SetRowColor{white}
+Ax = 0 & \seqsplit{Homogeneous} \tn 
+% Row Count 5 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+Ax = b & \seqsplit{Non-homogenous} \tn 
+% Row Count 7 (+ 2)
+% Row 3
+\SetRowColor{white}
+{\bf{x = x0 + t1v1 + t2v2  ...  + tkvk}} & \seqsplit{Homogeneous} \tn 
+% Row Count 9 (+ 2)
+% Row 4
+\SetRowColor{LightBackground}
+{\bf{x = t1v1  + t2v2  ...  + tkvk }} & \seqsplit{Non-homogeneous} \tn 
+% Row Count 11 (+ 2)
+% Row 5
+\SetRowColor{white}
+xp is any solution of NH system\{\{nl\}\}and xh is a solution of H system & {\bf{x = xp + xh}} \tn 
+% Row Count 14 (+ 3)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{1.84149 cm} x{3.13551 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Examples of Subspaces}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+IF: w1, w2 are within S & then w1+w2 are within S \{\{nl\}\} and kw1 is within S \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{- the zero vector 0 it self is a subspace} \tn 
+% Row Count 3 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{- R\textasciicircum{}n\textasciicircum{} is a subspace of all vectors} \tn 
+% Row Count 4 (+ 1)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{- Lines and planes through the origin are subspaces} \tn 
+% Row Count 6 (+ 2)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{- The set of all vectors b such that Ax = b is consistent, is a subspace} \tn 
+% Row Count 8 (+ 2)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{- If \{v1, v2, ...vk\} is any set of vectors in R\textasciicircum{}n\textasciicircum{}, then the set W of all linear combinations of these vector is a subspace} \tn 
+% Row Count 11 (+ 3)
+% Row 6
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{W = \{c1v1 + c2v2 + ... ckvk\}; c are within real numbers} \tn 
+% Row Count 13 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{p{0.4977 cm} p{0.4977 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Span}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{- the span of a set of vectors \{ v1, v2, ... vk\} is the set of all linear combinations of these vectors} \tn 
+% Row Count 3 (+ 3)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{span \{ v1, v2, ... vk\}  = \{ v11t, t2v2, ... , tkvk\}} \tn 
+% Row Count 5 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{If S = \{ v1, v2, ... vk\}, then W = span(S) is a subspace} \tn 
+% Row Count 7 (+ 2)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{Ax = b is consistent if and only if b is a linear combination of col(A)} \tn 
+% Row Count 9 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{X}
+\SetRowColor{DarkBackground}
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{Linear Independent}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{- if unique solution for a set of vectors, then it is linearly independent} \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{c1v1 + c2v2 ... + cnvn = 0; all the c = 0} \tn 
+% Row Count 3 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{- for dependent, not all the c = 0} \tn 
+% Row Count 4 (+ 1)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{Dependent if: \{\{nl\}\} - a linear combination of the other vectors \{\{nl\}\}- a scalar multiple of the other \{\{nl\}\}- a set of more than n vectors in R\textasciicircum{}n\textasciicircum{}} \tn 
+% Row Count 7 (+ 3)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{Independent if: \{\{nl\}\}- the span of these two vectors form a plane} \tn 
+% Row Count 9 (+ 2)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{- list the vectors as the columns of a matrix, row reduce it, if many solution, then it is dependent} \tn 
+% Row Count 11 (+ 2)
+% Row 6
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{- after RREF, the columns with leading 1's are a maxmially linearly independent subset according to Pivot Theorem} \tn 
+% Row Count 14 (+ 3)
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{1.94103 cm} x{3.03597 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Diagonal, Triangular, Symmetric Matrices}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+Diagonal Matrices & all zeros along the diagonal \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+Lower Triangular & zeros above diagonal \tn 
+% Row Count 4 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+Upper Triangular & zeros below the diagonal \tn 
+% Row Count 6 (+ 2)
+% Row 3
+\SetRowColor{white}
+Symmetric if: & {\bf{A\textasciicircum{}T\textasciicircum{} = A}} \tn 
+% Row Count 7 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+Skew-Symmetric if: & {\bf{A\textasciicircum{}T\textasciicircum{} = -A}} \tn 
+% Row Count 9 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{2.9862 cm} x{1.9908 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Determinants}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+{\bf{det(A) = a1jC1j + a2jC2j ... + anjCnj}} & expansion along jth column \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+{\bf{det(A) = ai1Ci1 + ai2Ci2 ... + ainCin}} & expansion along the ith row \tn 
+% Row Count 4 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{Cij = (-1)\textasciicircum{}i+j\textasciicircum{} Mij}}} \tn 
+% Row Count 5 (+ 1)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{Mij = deleted ith row and jth column matrix} \tn 
+% Row Count 6 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{- pick the one with most zeros to calculate easier} \tn 
+% Row Count 7 (+ 1)
+% Row 5
+\SetRowColor{white}
+det(A\textasciicircum{}T\textasciicircum{}) = det(A) & det(A\textasciicircum{}-1\textasciicircum{}) = 1/det(A) \tn 
+% Row Count 9 (+ 2)
+% Row 6
+\SetRowColor{LightBackground}
+det(AB) = det(A)det(B) & det(kA) = k\textasciicircum{}n\textasciicircum{}det(A) \tn 
+% Row Count 11 (+ 2)
+% Row 7
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{- A is invertible iff det(A) not equal 0} \tn 
+% Row Count 12 (+ 1)
+% Row 8
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{- det of triangular or diagonal matrix is the product of the diagonal entries} \tn 
+% Row Count 14 (+ 2)
+% Row 9
+\SetRowColor{white}
+det(A) for 2x2 matrix & {\bf{ad - bc}} \tn 
+% Row Count 15 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{2.33919 cm} x{2.63781 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Adjoint and Cramer's Rule}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+{\bf{adj(A) = C\textasciicircum{}T\textasciicircum{}}} & C\textasciicircum{}T\textasciicircum{} = matrix confactor of A \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+A\textasciicircum{}-1\textasciicircum{} = (1/det(A)) adj(A) & adj(A)A = det(A) I \tn 
+% Row Count 4 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+{\bf{x1 = det(A1) / det(A)}} & {\bf{x2 = det(A2) / det(A)}} \tn 
+% Row Count 6 (+ 2)
+% Row 3
+\SetRowColor{white}
+{\bf{xn = det(An) / det(A)}} & det(A) not equal 0 \tn 
+% Row Count 8 (+ 2)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{An is the matrix when the nth column  is replaced by b} \tn 
+% Row Count 10 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{1.9908 cm} x{2.9862 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Hyperplane, Area/Volume}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+a hyperplane in R\textasciicircum{}n\textasciicircum{} & {\bf{a1x1 + a2x2 ... + anxn = b}} \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{- can also written as ax = b} \tn 
+% Row Count 3 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+to find a\textasciicircum{}perp\textasciicircum{} & ax = 0, find the span \tn 
+% Row Count 4 (+ 1)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{if A is 2x2 matrix: \{\{nl\}\}- |det(A)| is the {\bf{area}} of parallelogram} \tn 
+% Row Count 6 (+ 2)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{if A is 3x3 matrix: \{\{nl\}\} - |det(A)| is the {\bf{volume}} of parallelepiped} \tn 
+% Row Count 8 (+ 2)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{- subtract points to get three vectors, then make it to a matrix to find the area/volume} \tn 
+% Row Count 10 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{1.54287 cm} x{3.43413 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Cross Product}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{u x v = (u2v3 - u3v2, u3v1 - u1v3, u1v2 - u2v1)}}} \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+u x v = -v x u & k(u x v) = (ku) x v = u x (kv) \tn 
+% Row Count 4 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+u x u = 0 & parallel vectors has 0 for c.p. \tn 
+% Row Count 6 (+ 2)
+% Row 3
+\SetRowColor{white}
+u (u x v) = 0 & v (u x v) = 0 \tn 
+% Row Count 8 (+ 2)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{u x v is perpendicular to span \{u, v\}} \tn 
+% Row Count 9 (+ 1)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{||u x v|| = ||u|| ||v|| sin(theta), where theta is the angle between vectors} \tn 
+% Row Count 11 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{2.33919 cm} x{2.63781 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Complex Number}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+complex number & {\bf{a + ib}} \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{(a + ib) + (c + id) = (a + c) + i(b + d)}}} \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{(a + ib) - (c + id) = (a - c) + i(b - d)}}} \tn 
+% Row Count 3 (+ 1)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{(a + ib) (c + id) = (ac + bd) + i(ad + bc)}}} \tn 
+% Row Count 4 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{(a + bx) (c + dx) = (ac + bdx\textasciicircum{}2\textasciicircum{}) + x(ad + bc)}}} \tn 
+% Row Count 5 (+ 1)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{i\textasciicircum{}2\textasciicircum{} = -1}}} \tn 
+% Row Count 6 (+ 1)
+% Row 6
+\SetRowColor{LightBackground}
+{\bf{z = a + ib}} & {\bf{z bar = a - ib}} \tn 
+% Row Count 7 (+ 1)
+% Row 7
+\SetRowColor{white}
+the length(magnitude) of vector z & {\bf{|z|}} = sqrt(z x z bar) \{\{nl\}\} = {\bf{sqrt(a\textasciicircum{}2\textasciicircum{} + b\textasciicircum{}2\textasciicircum{})}} \tn 
+% Row Count 10 (+ 3)
+% Row 8
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{z\textasciicircum{}-1\textasciicircum{} = 1/z = z bar / |z|\textasciicircum{}2\textasciicircum{}}}} \tn 
+% Row Count 11 (+ 1)
+% Row 9
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{z1 / z2 = z1z2\textasciicircum{}-1\textasciicircum{}}}} \tn 
+% Row Count 12 (+ 1)
+% Row 10
+\SetRowColor{LightBackground}
+{\bf{z = |z| (cos(θ) + i (sin(θ))}} & polar form (r = |z|) \tn 
+% Row Count 14 (+ 2)
+% Row 11
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{z1z2 = |z1| |z2| (cos(θ1 + θ2) + i (sin(θ1 + θ2))}}} \tn 
+% Row Count 16 (+ 2)
+% Row 12
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{z1/z2 = |z1| / |z2| (cos(θ1 - θ2) + i (sin(θ1 - θ2))}}} \tn 
+% Row Count 18 (+ 2)
+% Row 13
+\SetRowColor{white}
+z\textasciicircum{}n\textasciicircum{} = r\textasciicircum{}n\textasciicircum{}(cos(n θ) + i sin(n θ)) & r = |z| \tn 
+% Row Count 20 (+ 2)
+% Row 14
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{e\textasciicircum{}i theta\textasciicircum{} = cos(θ) + i sin(θ)} \tn 
+% Row Count 21 (+ 1)
+% Row 15
+\SetRowColor{white}
+e\textasciicircum{}i pi\textasciicircum{} = -1 & e\textasciicircum{}i pi\textasciicircum{} +1 = 0 \tn 
+% Row Count 22 (+ 1)
+% Row 16
+\SetRowColor{LightBackground}
+z1z2 = r1r2 e\textasciicircum{}i (θ1 + θ2)\textasciicircum{} & z\textasciicircum{}n\textasciicircum{} = r\textasciicircum{}n\textasciicircum{} e\textasciicircum{}i nθ\textasciicircum{} \tn 
+% Row Count 24 (+ 2)
+% Row 17
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{z1 /z2 = r1 / r2 e\textasciicircum{}i (θ1 - θ2)\textasciicircum{}} \tn 
+% Row Count 25 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{p{0.4977 cm} p{0.4977 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Eigenvalues and Eigenvectors}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{Ax= λx} \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{det(λI - A) = (-1)\textasciicircum{}n\textasciicircum{} det(A - λI)}}} \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{pa(λ) = 3x3: det(A - λI);  2x2: det(λI - A)} \tn 
+% Row Count 3 (+ 1)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{- solve for (λI - A)x = 0 for eigenvectors} \tn 
+% Row Count 4 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{Work Flow: }}\{\{nl\}\}- form matrix \{\{nl\}\}- compute pa(λ) = det(λI - A) \{\{nl\}\}- find roots of pa(λ) -\textgreater{} eigenvalues of A \{\{nl\}\}- plug in roots then solve for the equation} \tn 
+% Row Count 8 (+ 4)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{3.38436 cm} x{1.59264 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Linear Transformation}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{f: R\textasciicircum{}n\textasciicircum{} -\textgreater{} R\textasciicircum{}m\textasciicircum{}, n = domain, m = co-domain}} \{\{nl\}\}f(x1, x2, ...xn) = (y1, ...ym)} \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{T: R\textasciicircum{}n\textasciicircum{} -\textgreater{} R\textasciicircum{}m\textasciicircum{} is a linear transformatin if \{\{nl\}\}1. T(cu) = cT(u) \{\{nl\}\}2. T(u +v) = T(u）+ T(v)} \tn 
+% Row Count 4 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{for any linear transformation, T(0) = 0} \tn 
+% Row Count 5 (+ 1)
+% Row 3
+\SetRowColor{white}
+{\bf{Rθ = {[}T(e1) T(e2){]} = {[}cosθ  −sinθ{]} \{\{nl\}\} ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~{[}sinθ ~ cosθ{]} }} & matrix for rotation \tn 
+% Row Count 13 (+ 8)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{reflection across y-axis: T(x, y) = (-x, y)} \tn 
+% Row Count 14 (+ 1)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{reflection across x-axis: T(x, y) = (y, -x)} \tn 
+% Row Count 15 (+ 1)
+% Row 6
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{reflection across diagonal y = x, T(x, y) = (y, x)} \tn 
+% Row Count 16 (+ 1)
+% Row 7
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{orthogonal projection onto the x-axis: T(x, y) = (x, 0)} \tn 
+% Row Count 18 (+ 2)
+% Row 8
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{orthogonal projection onto the y-axis: T(x, y) = (0, y)} \tn 
+% Row Count 20 (+ 2)
+% Row 9
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{u = (1/ ||v||)v; express it vertically as u1 and u2} \tn 
+% Row Count 22 (+ 2)
+% Row 10
+\SetRowColor{LightBackground}
+{\bf{A = {[}(u1)\textasciicircum{}2\textasciicircum{} u2u1{]} \{\{nl\}\} ~ ~ ~ ~{[}u1u2 (u2)\textasciicircum{}2\textasciicircum{}{]}}} & projection matrix \tn 
+% Row Count 25 (+ 3)
+% Row 11
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{contraction with 0 ≤ k \textless{} 1 (shrink),  k \textgreater{} 1 (stretch) \{\{nl\}\}{\bf{ {[}x, y{]} -\textgreater{} {[}kx, ky{]}}}} \tn 
+% Row Count 27 (+ 2)
+% Row 12
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{compression in x-direction {\bf{{[}x, y{]} -\textgreater{} {[}kx, y{]}}}} \tn 
+% Row Count 28 (+ 1)
+% Row 13
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{compression in y-direction {\bf{{[}x, y{]} -\textgreater{} {[}x, ky{]}}}} \tn 
+% Row Count 29 (+ 1)
+% Row 14
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{shear in x-direction T(x,y) = (x+ky, y); \{\{nl\}\}{\bf{{[}x+ky (1, k), y( 0, 1){]}}}} \tn 
+% Row Count 31 (+ 2)
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\vfill
+\columnbreak
+\begin{tabularx}{5.377cm}{x{3.38436 cm} x{1.59264 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Linear Transformation (cont)}}  \tn
+% Row 15
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{shear in y-direction T(x,y) = (x, y+kx); \{\{nl\}\}{\bf{{[}x (1, 0), y (k, 1){]}}}} \tn 
+% Row Count 2 (+ 2)
+% Row 16
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{orthogonal projection on the xy-plane: {[}x, y , 0{]}} \tn 
+% Row Count 3 (+ 1)
+% Row 17
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{orthogonal projection on the xz-plane: {[}x, 0 , z{]}} \tn 
+% Row Count 4 (+ 1)
+% Row 18
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{orthogonal projection on the yz-plane: {[}0, y , z{]}} \tn 
+% Row Count 5 (+ 1)
+% Row 19
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{reflection about the xy-plane: {[}x, y, -z{]}} \tn 
+% Row Count 6 (+ 1)
+% Row 20
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{reflection about the xz-plane: {[}x, -y, z{]}} \tn 
+% Row Count 7 (+ 1)
+% Row 21
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{reflection about the yz-plane: {[}-x, y, z{]}} \tn 
+% Row Count 8 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{p{0.4977 cm} p{0.4977 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Orthogonal Transformation}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{an orthogonal transformation is a linear transformation T; R\textasciicircum{}n\textasciicircum{} -\textgreater{} R\textasciicircum{}n\textasciicircum{} that preserves lengths; {\bf{||T(u)|| = ||u||}}} \tn 
+% Row Count 3 (+ 3)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{||T(u)|| = ||u|| \textless{}=\textgreater{} T(x)·T(y) = x·y for all x,y in R\textasciicircum{}n\textasciicircum{}}}} \tn 
+% Row Count 5 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{orthogonal matrix is square matrix  A such that {\bf{A\textasciicircum{}T\textasciicircum{} = A\textasciicircum{}-1\textasciicircum{}}}} \tn 
+% Row Count 7 (+ 2)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{1. if A is orthogonal, then so is A\textasciicircum{}T\textasciicircum{} and A\textasciicircum{}-1\textasciicircum{}} \tn 
+% Row Count 8 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{2. a product of orthonal matrices is orthogonal} \tn 
+% Row Count 9 (+ 1)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{3. if A is orthogonal, then det(A) = 1 or -1} \tn 
+% Row Count 10 (+ 1)
+% Row 6
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{4. if A is orthogonal, then rows and columns of A are each orthonormal sets of vectors} \tn 
+% Row Count 12 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{X}
+\SetRowColor{DarkBackground}
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{Kernel, Range, Composition}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{ker(T) is the set of all vectors x such that T(x) = 0, RREF matrix, find the vector, {\bf{ker(T) = span\{(v)\}}}} \tn 
+% Row Count 3 (+ 3)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{the solution space of Ax = 0 is the null space;\{\{nl\}\} {\bf{null(A) = ker(A)}}} \tn 
+% Row Count 5 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{range of T, ran(T) is the set of vectors y such that \{\{nl\}\}y = T(x) for some x} \tn 
+% Row Count 7 (+ 2)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{ran(T) = col({[}T{]}) = span\{ {[}col1{]}, {[}col2{]} ...\}; Ax = b} \tn 
+% Row Count 9 (+ 2)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{Important Facts: \{\{nl\}\}1. T is one to one iff ker(T) = \{0\} \{\{nl\}\}2. Ax = b, if consistent, has a unique solution \{\{nl\}\}iff null(A) = \{0\}; ~ Ax = 0 has only the trivial solution iff null(A) = \{0\}} \tn 
+% Row Count 13 (+ 4)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{Important facts 2: \{\{nl\}\}1.T:R\textasciicircum{}n\textasciicircum{} -\textgreater{} R\textasciicircum{}m\textasciicircum{} is onto iff the system Tx = y has a solution x in R\textasciicircum{}n\textasciicircum{} for every y in R\textasciicircum{}m\textasciicircum{} \{\{nl\}\} 2. Ax = b is consistent for every b in R\textasciicircum{}m\textasciicircum{}(A is onto) iff col(A) = R\textasciicircum{}m\textasciicircum{}} \tn 
+% Row Count 17 (+ 4)
+% Row 6
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{The composition of T2 with T1 is: T2 ◦ T1} \tn 
+% Row Count 18 (+ 1)
+% Row 7
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{(T2 ◦ T1)(x) = T2(T1(x)); T2 ◦ T1: R\textasciicircum{}n\textasciicircum{} -\textgreater{} R\textasciicircum{}m\textasciicircum{}} \tn 
+% Row Count 20 (+ 2)
+% Row 8
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{compostion of linear transformations corresponds to matrix application: {\bf{{[}T2 ◦ T1{]} = {[}T1{]}{[}T2{]}}}} \tn 
+% Row Count 22 (+ 2)
+% Row 9
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{{[}T(θ1+θ2){]} = {[}Tθ2{]} ◦ {[}Tθ1{]}; \{\{nl\}\}rotate then shear ≠ shear then rotate} \tn 
+% Row Count 24 (+ 2)
+% Row 10
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{linear trans T: R\textasciicircum{}n\textasciicircum{}-\textgreater{}R\textasciicircum{}m\textasciicircum{} has an inverse iff T is one to one, T\textasciicircum{}-1\textasciicircum{}: R\textasciicircum{}m\textasciicircum{} -\textgreater{} R\textasciicircum{}n\textasciicircum{}, {\bf{Tx = y \textless{}=\textgreater{} x = T\textasciicircum{}-1\textasciicircum{}y}}} \tn 
+% Row Count 27 (+ 3)
+% Row 11
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{for Rn to Rn, {[}T\textasciicircum{}-1\textasciicircum{}{]} = {[}T{]}\textasciicircum{}-1\textasciicircum{}; {[}T{]}\textasciicircum{}-1\textasciicircum{}◦T = 1n \textless{}=\textgreater{} {[}T\textasciicircum{}-1\textasciicircum{}{]}{[}T{]}=Ɪn \{\{nl\}\} 1n is identity transformation; Ɪn is identity matrix} \tn 
+% Row Count 30 (+ 3)
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{p{0.4977 cm} p{0.4977 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Basis, Dimension, Rank}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{S is a basis for the subspace V of R\textasciicircum{}n\textasciicircum{} if: \{\{nl\}\}S is linearly idenpendent and span(S) = V} \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{dim(V) = k, k is the \# of vectors} \tn 
+% Row Count 3 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{row(A) = rows with leading ones after RREF} \tn 
+% Row Count 4 (+ 1)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{col(A) = columns with leading ones from original A} \tn 
+% Row Count 5 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{null(A) = free variable's vectors} \tn 
+% Row Count 6 (+ 1)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{null(A\textasciicircum{}T\textasciicircum{}) = after transform, the free variable vector} \tn 
+% Row Count 8 (+ 2)
+% Row 6
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{The Rank Theorem: rank(A) = rank(A\textasciicircum{}T\textasciicircum{}) for any matrix have the same dimension} \tn 
+% Row Count 10 (+ 2)
+% Row 7
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{rank(A) = \# of free vectors in span} \tn 
+% Row Count 11 (+ 1)
+% Row 8
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{dim(row(A)) = dim(col(A)) = rank(A)} \tn 
+% Row Count 12 (+ 1)
+% Row 9
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{dim(null(A)) = nullity(A)} \tn 
+% Row Count 13 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{2.4885 cm} x{2.4885 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Orthogonal Compliment, DImention Theorem}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{S\textasciicircum{}⟂\textasciicircum{} = \{v ∈ R\textasciicircum{}n\textasciicircum{} | v · w = 0 for all w ∈ S\}} \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{2}{x{5.377cm}}{S\textasciicircum{}⟂\textasciicircum{} is a subspace of R\textasciicircum{}n\textasciicircum{}; S\textasciicircum{}⟂\textasciicircum{} = span(S)\textasciicircum{}⟂\textasciicircum{} = W\textasciicircum{}⟂\textasciicircum{}} \tn 
+% Row Count 3 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+row(A)\textasciicircum{}⟂\textasciicircum{} = null(A) & null(A)\textasciicircum{}⟂\textasciicircum{} = row(A) \{\{nl\}\}((S\textasciicircum{}⟂\textasciicircum{})\textasciicircum{}⟂\textasciicircum{} = S iff S is subspace \tn 
+% Row Count 7 (+ 4)
+% Row 3
+\SetRowColor{white}
+col(A)\textasciicircum{}⟂\textasciicircum{} = null(A\textasciicircum{}T\textasciicircum{}) & null(A\textasciicircum{}T\textasciicircum{})\textasciicircum{}⟂\textasciicircum{} = col(A) \tn 
+% Row Count 9 (+ 2)
+% Row 4
+\SetRowColor{LightBackground}
+The Dimension Theorem \{\{nl\}\}A is m x n matrix & rank(A) + nullity(A) = n \{\{nl\}\}(k + (n-k) = n) \tn 
+% Row Count 12 (+ 3)
+% Row 5
+\SetRowColor{white}
+if W is a subspace of R\textasciicircum{}n\textasciicircum{} & dim(W) + dim(W\textasciicircum{}⟂\textasciicircum{}) = n \tn 
+% Row Count 14 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+
+% That's all folks
+\end{multicols*}
+
+\end{document}

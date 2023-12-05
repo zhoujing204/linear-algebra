@@ -1,9 +1,32 @@
 {
     "cSpell.words": [
+        "besselj",
+        "combsimp",
+        "dfdx",
+        "dotprint",
+        "dsolve",
+        "evalf",
+        "Exponentials",
+        "gammasimp",
+        "Graphviz",
         "gridlines",
+        "hyperexpand",
+        "integ",
+        "lambdify",
+        "linsolve",
+        "logcombine",
+        "mathml",
         "mathprofessorquotes",
+        "nonlinsolve",
         "Nonsquare",
-        "squishification"
+        "powdenest",
+        "powsimp",
+        "repr",
+        "solveset",
+        "squishification",
+        "srepr",
+        "sympify",
+        "trigsimp"
     ],
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#cae8ba",
