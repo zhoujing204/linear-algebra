@@ -7,6 +7,7 @@ Transcript:
 (00:20) &quot;Eigenvectors and eigenvalues&quot; is one of those topics that a lot of students find particularly unintuitive. Questions like &quot;why are we doing this&quot; and &quot;what does this actually mean&quot; are too often left just floating away in an unanswered sea of computations. And as I put out the videos of the series, a lot of you have commented about looking forward to visualizing this topic in particular.
 
 (00:41) I suspect that the reason for this is not so much that eigen-things are particularly complicated or poorly explained. In fact, it's comparatively straightforward and I think most books do a fine job explaining it. The issue is that it only really make sense if you have a solid visual understanding for many of the topics that precede it.
+
 (00:59) Most important here is that you know how to think about matrices as linear transformations, but you also need to be comfortable with things like determinants, linear systems of equations and change of basis. Confusion about eigen stuffs usually has more to do with a shaky foundation in one of these topics than it does with eigenvectors and eigenvalues themselves.
 
 (01:20) To start, consider some linear transformation in two dimensions, like the one shown here. It moves the basis vector i-hat to the coordinates (3, 0) and j-hat to (1, 2), so it's represented with a matrix, whose columns are (3, 0) and (1, 2). Focus in on what it does to one particular vector and think about the span of that vector, the line passing through its origin and its tip.
