@@ -4,7 +4,7 @@ Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra - YouTube
 <https://www.youtube.com/watch?v=PFDu9oVAE-g>
 
 Transcript:
-(00:20) &quot;Eigenvectors and eigenvalues&quot; is one of those topics that a lot of students find particularly unintuitive. Questions like &quot;why are we doing this&quot; and &quot;what does this actually mean&quot; are too often left just floating away in an unanswered sea of computations. And as I put out the videos of the series, a lot of you have commented about looking forward to visualizing this topic in particular.
+(00:20) Eigenvectors and eigenvalues is one of those topics that a lot of students find particularly unintuitive. Questions like why are we doing this and what does this actually mean are too often left just floating away in an unanswered sea of computations. And as I put out the videos of the series, a lot of you have commented about looking forward to visualizing this topic in particular.
 
 (00:41) I suspect that the reason for this is not so much that eigen-things are particularly complicated or poorly explained. In fact, it's comparatively straightforward and I think most books do a fine job explaining it. The issue is that it only really make sense if you have a solid visual understanding for many of the topics that precede it.
 
@@ -17,7 +17,7 @@ Transcript:
 
 (02:39) A slightly sneakier vector that remains on its own span during this transformation is (-1, 1), it ends up getting stretched by a factor of 2. And again, linearity is going to imply that any other vector on the diagonal line spanned by this guy is just going to get stretched out by a factor of 2. And for this transformation, those are all the vectors with this special property of staying on their span.
 
-(03:06) Those on the x-axis getting stretched out by a factor of 3 and those on this diagonal line getting stretched by a factor of 2. Any other vector is going to get rotated somewhat during the transformation, knocked off the line that it spans. As you might have guessed by now, these special vectors are called the &quot;eigenvectors&quot; of the transformation, and each eigenvector has associated with it, what's called an &quot;eigenvalue&quot;, which is just the factor by which it stretched or squashed during the transformation.
+(03:06) Those on the x-axis getting stretched out by a factor of 3 and those on this diagonal line getting stretched by a factor of 2. Any other vector is going to get rotated somewhat during the transformation, knocked off the line that it spans. As you might have guessed by now, these special vectors are called the eigenvectors of the transformation, and each eigenvector has associated with it, what's called an eigenvalue, which is just the factor by which it stretched or squashed during the transformation.
 
 (03:41) Of course, there's nothing special about stretching vs. squishing or the fact that these eigenvalues happen to be positive. In another example, you could have an eigenvector with eigenvalue -1/2, meaning that the vector gets flipped and squished by a factor of 1/2. But the important part here is that it stays on the line that it spans out without getting rotated off of it.
 
@@ -63,7 +63,7 @@ Transcript:
 
 (15:20) When you sandwich the original transformation putting the change of basis matrix on it's right and the inverse of the change of basis matrix on its left, the result will be a matrix representing that same transformation, but from the perspective of the new basis vectors coordinate system. The whole point of doing this with eigenvectors is that this new matrix is guaranteed to be diagonal with its corresponding eigenvalues down that diagonal.
 
-(15:47) This is because it represents working in a coordinate system where what happens to the basis vectors is that they get scaled during the transformation. A set of basis vectors, which are also eigenvectors, is called, again, reasonably enough, an &quot;eigenbasis&quot;. So if, for example, you needed to compute the 100-th power of this matrix, it would be much easier to change to an eigenbasis, compute the 100-th power in that system, then convert back to our standard system.
+(15:47) This is because it represents working in a coordinate system where what happens to the basis vectors is that they get scaled during the transformation. A set of basis vectors, which are also eigenvectors, is called, again, reasonably enough, an eigenbasis. So if, for example, you needed to compute the 100-th power of this matrix, it would be much easier to change to an eigenbasis, compute the 100-th power in that system, then convert back to our standard system.
 
 (16:17) You can't do this with all transformations. A shear, for example, doesn't have enough eigenvectors to span the full space. But if you can find an eigenbasis, it makes matrix operations really lovely. For those of you willing to work through a pretty neat puzzle to see what this looks like in action and how it can be used to produce some surprising results, I'll leave up a prompt here on the screen.
 
